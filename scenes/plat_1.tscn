@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhiyjpi0fu6yq"]
+
+[ext_resource type="Texture2D" uid="uid://c8wjd0ti1blul" path="res://tiles/plataforma_004.png" id="1_d72ct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdlud"]
+size = Vector2(1782, 107)
+
+[node name="plat1" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_d72ct")
+
+[node name="shap" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 21.5)
+shape = SubResource("RectangleShape2D_fdlud")

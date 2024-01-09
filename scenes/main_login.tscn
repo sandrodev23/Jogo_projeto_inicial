@@ -1,0 +1,165 @@
+[gd_scene load_steps=7 format=3 uid="uid://di0or2vvkrvdi"]
+
+[ext_resource type="FontFile" uid="uid://7kcgwuleffux" path="res://assets/font/Pokemon Solid.ttf" id="1_lvxan"]
+[ext_resource type="Script" path="res://scenes/main_login.gd" id="1_rqv3c"]
+
+[sub_resource type="FontVariation" id="FontVariation_p8khg"]
+base_font = ExtResource("1_lvxan")
+
+[sub_resource type="Animation" id="Animation_yn21d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lab2:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.996078, 1, 0.490196)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lab3:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.490196)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("lab4:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.490196)]
+}
+
+[sub_resource type="Animation" id="Animation_bdo4m"]
+resource_name = "login"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lab2:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.996078, 1, 1), Color(1, 0.996078, 1, 0.490196), Color(1, 0.996078, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lab3:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("lab4:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yq0s3"]
+_data = {
+"RESET": SubResource("Animation_yn21d"),
+"login": SubResource("Animation_bdo4m")
+}
+
+[node name="main_login" type="Node"]
+script = ExtResource("1_rqv3c")
+
+[node name="loginl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="lab" type="Label" parent="loginl"]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 233.0
+offset_right = 628.0
+offset_bottom = 320.0
+theme_override_fonts/font = SubResource("FontVariation_p8khg")
+theme_override_font_sizes/font_size = 80
+text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lab2" type="Label" parent="loginl"]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 211.0
+offset_right = 779.0
+offset_bottom = 354.0
+theme_override_colors/font_color = Color(1, 0.996078, 1, 0.490196)
+theme_override_fonts/font = SubResource("FontVariation_p8khg")
+theme_override_font_sizes/font_size = 100
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lab3" type="Label" parent="loginl"]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 211.0
+offset_right = 822.0
+offset_bottom = 354.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.490196)
+theme_override_fonts/font = SubResource("FontVariation_p8khg")
+theme_override_font_sizes/font_size = 100
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lab4" type="Label" parent="loginl"]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 211.0
+offset_right = 867.0
+offset_bottom = 354.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.490196)
+theme_override_fonts/font = SubResource("FontVariation_p8khg")
+theme_override_font_sizes/font_size = 100
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="anim" type="AnimationPlayer" parent="loginl"]
+libraries = {
+"": SubResource("AnimationLibrary_yq0s3")
+}
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

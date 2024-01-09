@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpv3g7chu6y4f"]
+
+[ext_resource type="Script" path="res://scrips/moeda.gd" id="1_4aupm"]
+[ext_resource type="Texture2D" uid="uid://b3lg5gpeblub3" path="res://assets/moeda.png" id="1_f8s32"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xt38"]
+radius = 15.5242
+
+[node name="moeda" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_4aupm")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_f8s32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0xt38")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

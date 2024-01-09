@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://4eb5itfcukcx"]
+
+[ext_resource type="Texture2D" uid="uid://d1pro6gq4lkcw" path="res://assets/plat2.png" id="1_78ilv"]
+
+[node name="plat6" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_78ilv")
+flip_h = true
+
+[node name="polly" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-169, 17, -149, 3, -68, 5, 35, 7, 70, 7, 108, 6, 167, 7, 169, 22, 177, 36, 179, 75, -172, 76)

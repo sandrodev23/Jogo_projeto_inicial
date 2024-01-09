@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://crhbijo0ogtdq"]
+
+[ext_resource type="Texture2D" uid="uid://b0h78611shw1b" path="res://assets/plat5.png" id="1_oyukd"]
+
+[node name="plat2" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_oyukd")
+
+[node name="polly" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, 32, 16, 26, 28, 4, 43, -5, 48, -28, 45, -32, 22, -28, 13, -18, 3, -20, -13, -18, -44, -18)

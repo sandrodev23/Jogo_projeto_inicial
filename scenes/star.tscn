@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dla006apfhykk"]
+
+[ext_resource type="Texture2D" uid="uid://8rqov7r3kwq1" path="res://assets/estrela1.png" id="1_ob4va"]
+[ext_resource type="Script" path="res://scenes/star.gd" id="1_yrgng"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mp3h6"]
+radius = 21.0238
+
+[node name="star" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_yrgng")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_ob4va")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mp3h6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

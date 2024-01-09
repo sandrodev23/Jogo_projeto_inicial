@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://dakrcn7aviloq"]
+
+[ext_resource type="Script" path="res://scrips/main_menu.gd" id="1_7p44r"]
+[ext_resource type="Texture2D" uid="uid://dhvuhxndhscdp" path="res://assets/2301.w026.n002.3043B.p1.3043.jpg" id="1_io5s1"]
+[ext_resource type="Texture2D" uid="uid://c1wfuv8yd1oss" path="res://Titulo_game.png" id="2_pncsx"]
+[ext_resource type="FontFile" uid="uid://7kcgwuleffux" path="res://assets/font/Pokemon Solid.ttf" id="3_y4spg"]
+
+[sub_resource type="FontVariation" id="FontVariation_llmsr"]
+base_font = ExtResource("3_y4spg")
+
+[sub_resource type="Animation" id="Animation_e7cvq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lab:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p5d8d"]
+resource_name = "fade_text"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lab:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hc73l"]
+_data = {
+"RESET": SubResource("Animation_e7cvq"),
+"fade_text": SubResource("Animation_p5d8d")
+}
+
+[node name="main_menu" type="Node"]
+script = ExtResource("1_7p44r")
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="texture" type="Sprite2D" parent="sprites"]
+position = Vector2(-2, -1)
+scale = Vector2(0.144625, 0.219663)
+texture = ExtResource("1_io5s1")
+centered = false
+
+[node name="titulo" type="Sprite2D" parent="sprites"]
+position = Vector2(299, 17)
+scale = Vector2(1.13423, 1.26246)
+texture = ExtResource("2_pncsx")
+centered = false
+
+[node name="control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="lab" type="Label" parent="control"]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 441.0
+offset_right = 915.0
+offset_bottom = 528.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_llmsr")
+theme_override_font_sizes/font_size = 60
+text = "Press enter to play"
+
+[node name="anim" type="AnimationPlayer" parent="control"]
+autoplay = "fade_text"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_hc73l")
+}

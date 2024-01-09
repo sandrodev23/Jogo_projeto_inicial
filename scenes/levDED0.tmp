@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtvk3vncknw5x"]
+
+[ext_resource type="Texture2D" uid="uid://cda4h30pl2gdr" path="res://assets/bg.png" id="1_yanqj"]
+[ext_resource type="PackedScene" uid="uid://bhiyjpi0fu6yq" path="res://scenes/plat_1.tscn" id="2_ifloq"]
+[ext_resource type="PackedScene" uid="uid://crhbijo0ogtdq" path="res://scenes/plat_2.tscn" id="3_asrx4"]
+[ext_resource type="PackedScene" uid="uid://g2yon88078x6" path="res://scenes/plat_3.tscn" id="4_tw12o"]
+[ext_resource type="PackedScene" uid="uid://3w1ufrlby7c" path="res://scenes/plat_4.tscn" id="5_nopr1"]
+[ext_resource type="PackedScene" uid="uid://cdef62mr0f8kl" path="res://scenes/plat_5.tscn" id="6_b2ak1"]
+[ext_resource type="PackedScene" uid="uid://4eb5itfcukcx" path="res://scenes/plat_6.tscn" id="7_5ilwy"]
+[ext_resource type="PackedScene" uid="uid://bepeqcl11q4j3" path="res://scenes/player.tscn" id="8_3vso7"]
+
+[node name="Leve_1" type="Node2D"]
+
+[node name="parallax" type="ParallaxBackground" parent="."]
+
+[node name="layer_bc" type="ParallaxLayer" parent="parallax"]
+
+[node name="sprite" type="Sprite2D" parent="parallax/layer_bc"]
+scale = Vector2(0.735, 0.87)
+texture = ExtResource("1_yanqj")
+centered = false
+
+[node name="cenario" type="Node" parent="."]
+
+[node name="plat1" parent="cenario" instance=ExtResource("2_ifloq")]
+position = Vector2(119, 575)
+
+[node name="plat2" parent="cenario" instance=ExtResource("3_asrx4")]
+position = Vector2(432, 575)
+
+[node name="plat3" parent="cenario" instance=ExtResource("4_tw12o")]
+position = Vector2(662, 567)
+
+[node name="plat4" parent="cenario" instance=ExtResource("5_nopr1")]
+position = Vector2(101, 299)
+
+[node name="plat5" parent="cenario" instance=ExtResource("6_b2ak1")]
+position = Vector2(608, 137)
+
+[node name="plat6" parent="cenario" instance=ExtResource("7_5ilwy")]
+position = Vector2(981, 575)
+
+[node name="player" parent="." instance=ExtResource("8_3vso7")]
+position = Vector2(57, 494)

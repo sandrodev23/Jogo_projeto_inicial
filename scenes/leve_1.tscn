@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtvk3vncknw5x"]
+
+[ext_resource type="Texture2D" uid="uid://cda4h30pl2gdr" path="res://assets/bg.png" id="1_yanqj"]
+[ext_resource type="PackedScene" uid="uid://bhiyjpi0fu6yq" path="res://scenes/plat_1.tscn" id="2_ifloq"]
+[ext_resource type="PackedScene" uid="uid://3w1ufrlby7c" path="res://scenes/plat_4.tscn" id="5_nopr1"]
+[ext_resource type="PackedScene" uid="uid://cdef62mr0f8kl" path="res://scenes/plat_5.tscn" id="6_b2ak1"]
+[ext_resource type="PackedScene" uid="uid://4eb5itfcukcx" path="res://scenes/plat_6.tscn" id="7_5ilwy"]
+[ext_resource type="PackedScene" uid="uid://bt1ffp86yxu36" path="res://scenes/playr_2.tscn" id="9_mk6h7"]
+[ext_resource type="PackedScene" uid="uid://cpv3g7chu6y4f" path="res://scenes/moeda.tscn" id="9_r48qy"]
+[ext_resource type="PackedScene" uid="uid://dla006apfhykk" path="res://scenes/star.tscn" id="9_xm0e8"]
+[ext_resource type="PackedScene" uid="uid://c73m3p2cmvjxi" path="res://scenes/inimigo.tscn" id="10_dlvbp"]
+[ext_resource type="PackedScene" uid="uid://cw238xm22kiq2" path="res://scenes/moving.tscn" id="10_jvn2s"]
+
+[sub_resource type="GDScript" id="GDScript_eoodf"]
+script/source = "extends Node2D
+
+
+
+func _on_playr_coll_area_entered(area):
+	if area.name == \"area_moedas\":
+		area.get_parent().queue_free()
+		
+"
+
+[node name="Leve_1" type="Node2D"]
+script = SubResource("GDScript_eoodf")
+
+[node name="parallax" type="ParallaxBackground" parent="."]
+
+[node name="layer_bc" type="ParallaxLayer" parent="parallax"]
+
+[node name="sprite" type="Sprite2D" parent="parallax/layer_bc"]
+scale = Vector2(0.735, 0.87)
+texture = ExtResource("1_yanqj")
+centered = false
+
+[node name="moving4" type="Node" parent="."]
+
+[node name="moving" parent="moving4" instance=ExtResource("10_jvn2s")]
+position = Vector2(360, 583)
+move_speed = 4.0
+distance = 300
+move_horizontal = false
+
+[node name="moving2" parent="moving4" instance=ExtResource("10_jvn2s")]
+position = Vector2(540, 583)
+move_speed = 5.0
+distance = 200
+
+[node name="moving3" parent="moving4" instance=ExtResource("10_jvn2s")]
+position = Vector2(898, 605)
+move_speed = 4.0
+distance = 500
+move_horizontal = false
+
+[node name="cenario" type="Node" parent="."]
+
+[node name="plat1" parent="cenario" instance=ExtResource("2_ifloq")]
+position = Vector2(119, 575)
+collision_layer = 2
+collision_mask = 0
+
+[node name="plat4" parent="cenario" instance=ExtResource("5_nopr1")]
+position = Vector2(101, 299)
+collision_layer = 2
+collision_mask = 0
+
+[node name="plat5" parent="cenario" instance=ExtResource("6_b2ak1")]
+position = Vector2(608, 137)
+collision_layer = 2
+collision_mask = 0
+
+[node name="plat6" parent="cenario" instance=ExtResource("7_5ilwy")]
+position = Vector2(981, 575)
+
+[node name="star" type="Node" parent="."]
+
+[node name="star" parent="star" instance=ExtResource("9_xm0e8")]
+position = Vector2(987, 535)
+
+[node name="star2" parent="star" instance=ExtResource("9_xm0e8")]
+position = Vector2(658, 387)
+
+[node name="star5" parent="star" instance=ExtResource("9_xm0e8")]
+position = Vector2(357, 471)
+collision_mask = 2
+
+[node name="star3" parent="star" instance=ExtResource("9_xm0e8")]
+position = Vector2(117, 233)
+
+[node name="star4" parent="star" instance=ExtResource("9_xm0e8")]
+position = Vector2(602, 75)
+
+[node name="moeda" type="Node" parent="."]
+
+[node name="moeda" parent="moeda" instance=ExtResource("9_r48qy")]
+position = Vector2(713, 75)
+
+[node name="moeda2" parent="moeda" instance=ExtResource("9_r48qy")]
+position = Vector2(1089, 562)
+
+[node name="moeda3" parent="moeda" instance=ExtResource("9_r48qy")]
+position = Vector2(668, 514)
+
+[node name="inimigo" parent="." instance=ExtResource("10_dlvbp")]
+position = Vector2(175, 562)
+
+[node name="playr2" parent="." instance=ExtResource("9_mk6h7")]
+position = Vector2(235, 517)
